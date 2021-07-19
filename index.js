@@ -99,8 +99,7 @@ Use the getInningScore() function below to do the following:
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
 function getInningScore(inningcb) {
-  const currentScore = {Home: 0, Away: 0}
-  return currentScore;
+  return { Home: inningcb(), Away: inningcb()};
 }
 
 console.log('task 4:', getInningScore(inning));
@@ -146,19 +145,36 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(getInningScorecb, inningcb){
-//   let totalGame = [];
-//   for (let i = 0; i < 10; i++) {
-//     currentScore.Home += inningcb();
-//     currentScore.Away += inningcb();
-//   }
-//   totalGame.push(`Inning ${i + 1}: Away: ${currentScore.Away} - Home: ${currentScore.Home}`)
-//   } totalGame.push(`Final Score: Away: ${currentScore.Away} - Home: ${currentScore.Home}`)
-//   // if(${currentScore.Away} === ${currentScore.Home}){
-//   // return "This game will require extra innings:" Away: ${ currentScore.Away } - Home: ${currentScore.Home};
-  }
-
-// console.log('task 5:', scoreboard(getInningScore, inning));
+// pass in getInningcb, inningcb, inningsNum
+function scoreboard(getInningScorecb, inningcb, inningsNum){
+  // declare an array that we can push our results to
+   let totalGame = [];
+   //make a variable for home score and away score and set them to 0 (use b/c you will update them)
+    let homeScore = 0;
+    let awayScore = 0;
+   // for loop - let i = 0; i < inningsNum; i++
+    for (let i = 0; i < inningsNum; i++) {
+   //create a variable for the home + away object from getInningcb(inningcb)
+      const currentScore = getInningScorecb(inningcb);
+      homeScore += currentScore.Home;
+      awayScore += currentScore.Away;
+   //update your variables of home and away for each inning
+   //push them to your array
+    totalGame.push(`Inning ${i + 1}: Away: ${currentScore.Away} - Home: ${currentScore.Home}`);
+   //outside of loop
+   //if awayscore === homescore
+  }if (homeScore === awayScore){
+   //this game will require extra innings
+    totalGame.push(`This game will require extra innings: Away: ${awayScore} - Home: ${homeScore}`);
+   //else
+  }else{
+   //push final score
+    totalGame.push(`Final Score: Away: ${awayScore} - Home: ${homeScore}`);
+   //return array
+    
+  }return totalGame;
+}
+console.log('task 5:', scoreboard(getInningScore, inning, 9));
 
 
 
