@@ -62,7 +62,7 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
+function inning(){
     return Math.floor(Math.random() * Math.floor(3));
 }
 
@@ -82,19 +82,28 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningcb, numOfInnings){
+  const currentScore = {Home: 0, Away: 0}
+  for (let i = 0; i < numOfInnings; i++) {
+    currentScore.Home += inningcb();
+    currentScore.Away += inningcb();
+   }
+   return currentScore;
 }
+
+console.log('task 3:', finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningcb) {
+  const currentScore = {Home: 0, Away: 0}
+  return currentScore;
 }
 
+console.log('task 4:', getInningScore(inning));
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -137,56 +146,28 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
-
-// //a callback function
-// function score() {
-//   return Math.floor(Math.random() * Math.floor(6));
-// }
-
-// //hockey Game - callback function / higher order function
-// function hockeyGame(scorecb) {
-//   // returning an object with a score for Home and Away
-//   return {
-//     // invoking the score function to get our random number for home and away
-//     Home: scorecb(),
-//     Away: scorecb()
+function scoreboard(getInningScorecb, inningcb){
+//   let totalGame = [];
+//   for (let i = 0; i < 10; i++) {
+//     currentScore.Home += inningcb();
+//     currentScore.Away += inningcb();
 //   }
-// }
+//   totalGame.push(`Inning ${i + 1}: Away: ${currentScore.Away} - Home: ${currentScore.Home}`)
+//   } totalGame.push(`Final Score: Away: ${currentScore.Away} - Home: ${currentScore.Home}`)
+//   // if(${currentScore.Away} === ${currentScore.Home}){
+//   // return "This game will require extra innings:" Away: ${ currentScore.Away } - Home: ${currentScore.Home};
+  }
 
-// // console.log(hockeyGame(score)); //invoking hockeyGame and passing in the score function as an argument 
+// console.log('task 5:', scoreboard(getInningScore, inning));
 
-// //create a function called totalGameScore - it should take score and hockeyGame as callbacks and it should return an array with the score of each period as a string
-// // `Period #: Away: score - Home: score`
 
-// function totalGameScore(scorecb, gamecb) {
-//   //array we are going to push to
-//   const totalGame = [];
-//   let homeScore = 0;
-//   let awayScore = 0;
 
-//   //this loop will loop for each period in the hockey game
-//   for (let i = 0; i < 3; i++) {
-//     // creating a variable and setting it equal to the object returned from the game function
-//     const currentScore = gamecb(scorecb);
-//     // {
-//     //   Home: randomNumber
-//     //   Away: randomNumber
-//     // }
-//     // grabbing the home score from the object
-//     homeScore = homeScore + currentScore.Home;
-//     // grabbing the away score from the object
-//     awayScore = awayScore + currentScore.Away;
-//     // pushing the score into the array at each period
-//     totalGame.push(`Period ${i + 1}: Away: ${awayScore} - Home: ${homeScore}`)
-//   }
-//   // returning the array
-//   return totalGame;
-// }
 
-// console.log(totalGameScore(score, hockeyGame));
+
+
+
+
+
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
