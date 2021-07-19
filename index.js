@@ -63,9 +63,10 @@ NOTE: This will be a callback function for the tasks below
 */
 
 function inning(/*Code Here*/){
-    /*Code Here*/
+    return Math.floor(Math.random() * Math.floor(3));
 }
 
+console.log('task 2', inning());
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -140,7 +141,52 @@ function scoreboard(/* CODE HERE */) {
   /* CODE HERE */
 }
 
+// //a callback function
+// function score() {
+//   return Math.floor(Math.random() * Math.floor(6));
+// }
 
+// //hockey Game - callback function / higher order function
+// function hockeyGame(scorecb) {
+//   // returning an object with a score for Home and Away
+//   return {
+//     // invoking the score function to get our random number for home and away
+//     Home: scorecb(),
+//     Away: scorecb()
+//   }
+// }
+
+// // console.log(hockeyGame(score)); //invoking hockeyGame and passing in the score function as an argument 
+
+// //create a function called totalGameScore - it should take score and hockeyGame as callbacks and it should return an array with the score of each period as a string
+// // `Period #: Away: score - Home: score`
+
+// function totalGameScore(scorecb, gamecb) {
+//   //array we are going to push to
+//   const totalGame = [];
+//   let homeScore = 0;
+//   let awayScore = 0;
+
+//   //this loop will loop for each period in the hockey game
+//   for (let i = 0; i < 3; i++) {
+//     // creating a variable and setting it equal to the object returned from the game function
+//     const currentScore = gamecb(scorecb);
+//     // {
+//     //   Home: randomNumber
+//     //   Away: randomNumber
+//     // }
+//     // grabbing the home score from the object
+//     homeScore = homeScore + currentScore.Home;
+//     // grabbing the away score from the object
+//     awayScore = awayScore + currentScore.Away;
+//     // pushing the score into the array at each period
+//     totalGame.push(`Period ${i + 1}: Away: ${awayScore} - Home: ${homeScore}`)
+//   }
+//   // returning the array
+//   return totalGame;
+// }
+
+// console.log(totalGameScore(score, hockeyGame));
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
